@@ -59,11 +59,11 @@ module.exports = function(grunt) {
       compactFormat: {
         options: {
           screenshotRoot: 'screens',
-          url: 'http://optimizely.com/',
-          width: 500,
+          url: 'http://0.0.0.0:8000/dist',
+          width: 1000,
           //gm: true
         },
-        src: ['about', 'contact', 'resources/live-demo-webinar'],
+        src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
         dest: 'compact-format',
       },
       compactFormatGlobbing: {
@@ -110,7 +110,5 @@ module.exports = function(grunt) {
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'jasmine_node']);
-
-  grunt.registerTask('screens', 'connect', 'resemble:dynamicMapping');
 
 };

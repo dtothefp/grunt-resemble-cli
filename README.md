@@ -1,6 +1,5 @@
-# grunt-injector
-
-> The best Grunt plugin ever.
+# grunt-resemble-cli
+> Grunt wrapper around the resemble-cli image diffing tool
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -8,23 +7,23 @@ This plugin requires Grunt `~0.4.5`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-injector --save-dev
+npm install grunt-resemble-cli --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-injector');
+grunt.loadNpmTasks('grunt-resemble-cli');
 ```
 
-## The "injector" task
+## The "resemble" task
 
 ### Overview
-In your project's Gruntfile, add a section named `injector` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `resemble` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  injector: {
+  resemble: {
     options: {
       // Task-specific options go here.
     },
@@ -35,15 +34,15 @@ grunt.initConfig({
 });
 ```
 
-### Options
+### Options TODO
 
-#### options.separator
+#### options.
 Type: `String`
 Default value: `',  '`
 
 A string value that is used to do something with whatever.
 
-#### options.punctuation
+#### options.
 Type: `String`
 Default value: `'.'`
 
