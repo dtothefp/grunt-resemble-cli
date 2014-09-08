@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        
+        <script src="/dist/assets/js/libraries/jquery-2.1.1.min.js"></script>
+        <script>
+            window.optly_q = [];
+        </script>
+        <script>window.optly=window.optly||{},window.optly.mrkt=window.optly.mrkt||{},window.optly.mrkt.services=window.optly.mrkt.services||{},window.optly.mrkt.user=window.optly.mrkt.user||{},window.optly.mrkt.services.xhr={makeRequest:function(t,e){var r,i=[];if(Array.isArray(t)){for(var s=0;s<t.length;s+=1)"object"==typeof t[s]&&(r=$.ajax({type:t[s].type,url:t[s].url}),void 0!==t[s].properties&&this.handleErrors(r,t[s].url,t[s].properties),i.push(r));return void 0!==e&&this.resolveDeffereds(i,e),i}return r=$.ajax({type:t.type,url:t.url}),void 0!==t.properties&&this.handleErrors(r,t.url,t.properties),r},logSegmentError:function(t,e,r){window.analytics.track(t,{category:e,label:r})},validateTypes:function(t,e,r){var i;$.each(e,function(s,n){"object"!=typeof n?typeof t[s]!==n&&(i="resp."+s+" is not a "+n+": "+typeof t[s],this.logSegmentError(r,"api error",i)):this.validateNestedTypes(t[s],e[s],s,n,r)}.bind(this))},validateNestedTypes:function(t,e,r,i,s){var n,o;Array.isArray(t)?$.each(t,function(t,i){$.each(e,function(t,e){o=typeof i[t],o!==e&&(n="resp."+r+"."+t+" is not a "+e+": "+o,this.logSegmentError(s,"api error",n))}.bind(this))}.bind(this)):$.each(i,function(e,i){o=typeof t[e],o!==i&&(n="resp."+r+"."+e+" is not a "+i+": "+o,this.logSegmentError(s,"api error",n))}.bind(this))},handleErrors:function(t,e,r){var i,s;t.always(function(t,n,o){if(this.isPromise(o)&&200===o.status){try{i=$.parseJSON(o.responseText)}catch(a){return void this.logSegmentError(e,"api error","response contains invalid json "+a)}this.validateTypes(i,r,e)}else{if(this.isPromise(t)&&200===t.status)try{i=$.parseJSON(t.responseText)}catch(a){s=a+", Response Text: "+t.responseText+", Status Text: "+t.statusText+", Status: "+t.status}void 0===s&&(s="Response Text: "+t.responseText+", Status Text: "+t.statusText+", Status: "+t.status),this.logSegmentError(e,"api error",s)}}.bind(this))},isPromise:function(t){if("function"!=typeof t.then)return!1;var e=String($.Deferred().then),r=String(t.then);return e===r},resolveDeffereds:function(t,e){var r,i=[];return $.when.apply($,t).done(function(){var t=Array.prototype.slice.call(arguments);$.each(t,function(s,n){var o=n[0];this.isPromise(o)||"success"!==n[1]||i.push(o),s===t.length-1&&(r=window.optly_q,window.optly.mrkt.user={account:i[0],experiments:i[1]},window.optly_q=new e(i[0],i[1]),window.optly_q.push(r))}.bind(this))}.bind(this)),!0},readCookie:function(t){t=t.replace(/([.*+?^=!:${}()|[\]\/\\])/g,"\\$1");var e=new RegExp("(?:^|;)\\s?"+t+"=(.*?)(?:;|$)","i"),r=document.cookie.match(e);return r&&window.unescape(r[1])},getLoginStatus:function(t,e){var r;return this.readCookie("optimizely_signed_in")?r=this.makeRequest(t,e):void 0}},function(){"use strict";var t,e,r=function(t,e){this.acctData=t,this.expData=e,this.transformQuedArgs=function(t){$.each(t,function(e,r){void 0!==this[r]&&(t[e]=this[r])}.bind(this))},this.parseQ=function(t,e){var r;if("function"==typeof t[e])r=t.slice(1),this.transformQuedArgs(r),t[e].apply(t[e],r);else for(var i=0;i<t[e].length;i+=1)"function"==typeof t[e][i]&&(r=t[e].slice(1),this.transformQuedArgs(r),t[e][i].apply(t[e][i],r))},this.push=function(t){for(var e=0;e<t.length;e+=1)this.parseQ(t,e)},this.userData={account:this.acctData,experiments:this.expData}};return t={type:"GET",url:"/account/info",properties:{email:"string",account_id:"number"}},e={type:"GET",url:"/experiment/load_recent?max_experiments=5",properties:{experiments:{id:"number",description:"string",has_started:"boolean",can_edit:"boolean"}}},window.optly.mrkt.services.xhr.getLoginStatus([t,e],r)}();</script>
+        <script src="//cdn.optimizely.com/js/1205230573.js"></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>Optimizely: A/B testing software you'll actually use</title>
+        
+        <meta name="description" content="Improve conversions through A/B Testing, Split Testing and Multivariate Testing with Optimizely!">
+        <meta name="keywords" content="AB test, split test, multivariate testing, conversion rate">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta property="og:title" content="Optimizely: A/B testing software you'll actually use">
+        <meta property="og:description" content="Optimizely: Improve conversions through A/B Testing, Split Testing and Multivariate Testing with Optimizely!">
+        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+        <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7838232/684744/css/fonts.css">
+        
+        <link rel="stylesheet" href="/dist/assets/css/styles.css">
+        <script src="/dist/assets/js/libraries/modernizr.2.8.3.min.js"></script>
+        
+        <script type="text/javascript">
+        window.analytics=window.analytics||[];window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+            window.analytics.load('l4usxygsxg');
+            window.analytics.page();
+        </script>
+    </head>
+     <body class="signed-out sample-size-page">
+        <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="outer-wrapper">
+            <div id="inner-wrapper">
+                <header>
+                    
+                    <div id="top-nav-cont">
+                        <div class="container">
+                            <div href="#" class="mobile-nav-toggle" id="nav-menu">menu</div>
+                            <a href="#" class="user-nav-toggle" id="user-nav-cont">
+                                <svg id="user-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <path id="user-icon-path" d="M94.297,87.489c-0.174-2.581-0.688-8.903-1.735-11.833c-1.351-3.787-3.015-5.489-5.097-6.878  c-1.023-0.683-4.824-2.123-10.503-4.242c-5.161-1.927-11.009-4.112-13.107-5.304c-1.894-1.078-3.355-6.043-3.311-7.594  c0.02-0.074,0.174-0.414,1.279-1.623c2.229-2.435,5.181-7.118,6.394-11.65c1.653-6.183,2.921-18.708-2.806-26.42  c-3.257-4.386-8.325-6.719-15.066-6.934L49.839,5l-0.175,0.011c-6.742,0.215-11.812,2.549-15.07,6.936  c-5.728,7.716-4.457,20.237-2.803,26.42c1.211,4.528,4.154,9.205,6.377,11.634c0.014,0.015,0.029,0.03,0.043,0.045  c0.002,0.003,0.005,0.006,0.008,0.009c0.327,0.358,1.093,1.197,1.257,1.659c0.59,1.664-1.554,6.51-3.323,7.518  c-2.094,1.191-7.945,3.375-13.18,5.33c-5.641,2.107-9.416,3.538-10.432,4.216c-2.081,1.387-3.744,3.087-5.096,6.876  C6.39,78.601,5.875,84.97,5.702,87.571l-0.048,0.724l0.526,0.5C7.711,90.25,15.397,95,50.003,95c34.328,0,42.203-4.8,43.799-6.27  l0.544-0.502L94.297,87.489z"/>
+                                </svg>
+                            </a>
+                            <div id="utility-nav-cont">
+                                <ul class="signed-out-content utility-nav nav" data-show-user-state="logged-out">
+                                    <li class="first"><a data-modal-click="signup">Sign Up</a></li>
+                                    <li class="last"><a data-modal-click="signin">Log In</a></li>
+                                </ul><!--/.signed-out-content-->
+                                <ul id="signed-in-utility" class="signed-in-content utility-nav nav"></ul><!--/.signed-in-content-->
+                            </div><!--/#utility-nav-cont-->
+                        </div><!--/.container-->
+                    </div><!--/#top-nav-cont-->
+                    
+                    <div id="main-nav-cont" class="main-nav">
+                        <div class="container">
+                            <p class="logo-cont"><a class="logo" href="/dist/">Optimizely</a></p>
+                            
+                            <nav>
+                                <ul id="main-nav" class="nav">
+                                    <li class="first">
+                                        <p>Product</p>
+                                        <ul>
+                                            <li class="first"><a href="/dist/benefits/">Benefits</a></li>
+                                            <li><a href="/pricing">Plans and Pricing</a></li>
+                                            <li><a href="/dist/mobile/">Mobile</a></li>
+                                            <li><a href="/dist/customers/">Customer List</a></li>
+                                            <li><a href="/dist/customers/customer-stories/">Customer Stories</a></li>
+                                            <li class="last"><a href="/dist/resources/live-demo-webinar/">Live Demo Signup</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Pricing</a></li>
+                                    <li>
+                                        <p>Optiverse</p>
+                                        <ul>
+                                            <li><a href="https://community.optimizely.com">Community</a></li>
+                                            <li><a href="https://help.optimizely.com">Support</a></li>
+                                            <li><a href="https://learn.optimizely.com">Academy</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Resources</p>
+                                        <ul>
+                                            <li><a href="/dist/ab-testing/">What is A/B Testing?</a></li>
+                                            <li><a href="/dist/split-testing/">What is Split Testing?</a></li>
+                                            <li><a href="/dist/resources/multivariate-testing/">What is Multivariate Testing?</a></li>
+                                            <li><a href="/dist/gettingstarted/">Getting Started</a></li>
+                                            <li><a href="/dist/partners/">Solutions Partners</a></li>
+                                            <li><a href="/dist/integrations/">Integrations</a></li>
+                                            <li><a href="/dist/faq/">FAQ</a></li>
+                                            <li><a href="http://developers.optimizely.com">Developer Platform</a></li>
+                                            <li><a href="http://certification.optimizely.com">Certification</a></li>
+                                            <li><a href="/dist/resources/sample-size-calculator/">Sample Size Calculator</a></li>
+                                            <li><a href="http://blog.optimizely.com">Blog</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="last"><a href="/dist/jobs/">Jobs</a></li>
+                                </ul><!--#main-nav-->
+                            </nav>
+                        </div><!--/container-->
+                    </div><!--/#main-nav-cont-->
+                </header>
+                
+<div id="main">
+	<div id="page-header">
+		<div class="container">
+			<h1>A/B Test Sample Size Calculator</h1>
+			
+		</div><!--/.container-->
+	</div><!--/#page-header-->
+	<div id="page-header-gradient"></div>
+	<div id="page-content">
+		<div class="container">
+			
+
+
+<div class="callout calc-wrapper">
+
+  
+  <div class="row">
+    <div class="columns one-third calc-percents">
+      <label for="" class="calc-demo-title">Baseline Conversion Rate</label>
+      <div class="input-wrapper">
+        
+        <input type="number" min="0" value="3" data-calc-model="conversion">
+        
+        <span>%</span>
+      </div>
+    </div>
+    <div class="columns two-thirds">
+      <p class="calc-content">Your control group&#x27;s expected conversion rate.&nbsp;<a class="question-link" target="_blank" href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#baseline">[?]</a></p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="columns one-third calc-percents">
+      <label for="" class="calc-demo-title">Minimum Detectable Effect</label>
+      <div class="input-wrapper">
+        
+          
+          <input type="number" min="0" value="20" data-calc-model="effect">
+          
+        
+        <span>%</span>
+      </div>
+    </div>
+    <div class="columns two-thirds">
+      <p class="calc-content">The minimum relative change in conversion rate you would like to be able to detect.&nbsp;<a class="question-link" target="_blank" href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#minimum">[?]</a></p>
+    </div>
+  </div>
+  
+
+  
+  <div class="row">
+    <div class="columns one-third">
+      <label for="" class="calc-demo-title">Statistical Power</label>
+      
+      <div class="calculator-variables"><span data-slider-label="power">80</span>%</div>
+      <div class="stat-wrapper">
+        <input id="power" class="optly-hide" type="range" min="60" max="95" step="5" class="fade" data-calc-model="power" data-slider="power" />
+        <button class="button-link" data-slider="power" >edit</button>
+      </div>
+      
+      
+    </div>
+    <div class="columns two-thirds">
+      <p class="calc-content">80% is an accepted standard for statistical power.&nbsp;<a class="question-link" target="_blank" href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#statistical_power">[?]</a></p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="columns one-third">
+      <label for="" class="calc-demo-title">Statistical Significance</label>
+      
+      
+      <div class="calculator-variables"><span data-slider-label="significance">95</span>%</div>
+      <div class="stat-wrapper">
+        <input id="significance" class="optly-hide" type="range" min="80" max="99" step="1" class="fade" data-calc-model="significance" data-slider="significance" />
+        <button class="button-link" data-slider="significance" >edit</button>
+      </div>
+      
+    </div>
+    <div class="columns two-thirds">
+      <p class="calc-content">95% is an accepted standard for statistical significance.&nbsp;<a class="question-link" target="_blank" href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#statistical_significance">[?]</a></p>
+    </div>
+  </div>
+  
+
+  
+  <div class="row">
+    <div class="columns one-third">
+      
+      <div class="tails">
+        <label for="">
+        
+        <input type="radio" name="tails" checked value="1" data-calc-model="tails">
+        
+          <span>1-tailed</span>
+        </label>
+      </div>
+      
+      <div class="tails">
+        <label for="">
+        
+          
+          <input type="radio" name="tails" value="2" data-calc-model="tails">
+          
+        
+          <span>2-tailed</span>
+        </label>
+      </div>
+      
+    </div>
+    <div class="columns two-thirds">
+      <p class="calc-content last">1-tailed tests will identify a winner faster than 2-tailed tests. Note: The Optimizely product uses a 1-tailed test to enable you to make faster decisions.&nbsp;<a class="question-link" target="_blank" href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#calculating_significance">[?]</a></p>
+    </div>
+  </div>
+  
+
+  <div class="calc-sample-cont">
+    <div class="sample-label">Sample Size per Variation</div>
+    <div id="sample"></div>
+  </div>
+
+
+</div>
+
+
+<div class="calc-faq-wrapper">
+  
+  <h3>FAQ</h3>
+  <div class="calc-faq-cont">
+    
+    <div class="calc-faq-subtitle">How many visitors do I need for my A/B test?</div>
+    <p>This calculator allows you to calculate the sample size you will need in each variation of your A/B test in order to measure a change in conversion rate.</p>
+
+    
+    <div class="calc-faq-subtitle">How do I determine the baseline conversion rate?</div>
+    <p>You can look at historical data on how this page has typically performed in the past, from a tool like Google Analytics or other website analytics you use. <a href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#baseline">Learn more</a>.</p>
+
+    
+    <div class="calc-faq-subtitle">What is Minimum Detectable Effect (MDE)?</div>
+    <p>This is essentially the sensitivity of your test, or its ability to detect a change in conversion rate. For example, if your baseline conversion rate is 20%, and you set an MDE of 10%, then you will be able to detect changes in your conversion rate of at least 10% * 20% = 2%. This means you would be able to detect any changes that take your conversion rate outside the range of 18% – 22%. <a href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#minimum">Learn more</a>.</p>
+
+    
+    <div class="calc-faq-subtitle">How do I choose a value for minimum detectable effect (MDE)?</div>
+    <p>Decide how willing you are to trade off sensitivity of your test versus how long you might need to run your test for. The smaller the MDE, the more sensitive you are asking your test to be, and the larger sample size you will need. For example, if you are satisfied with a 10% MDE, which will only detect changes in conversion rate of 10% or more, you will need a smaller sample size than if you are asking for a very sensitive test with 1% MDE. <a href="https://help.optimizely.com/hc/en-us/articles/200133789-How-long-to-run-a-test#minimum">Learn more</a>.</p>
+
+    
+  </div>
+  
+</div>
+
+
+<div class="shadow-cta">
+  <h4>Learn more about Optimizely</h4>
+  <a href="https://help.optimizely.com/hc/en-us" target="_blank" class="primary-button">Visit the Knowledge Base</a>
+</div>
+
+
+		</div><!--/.container-->
+	</div><!--/#content-->
+</div><!--/#main-->
+
+                <footer>
+                    <div class="container footer-wrapper">
+                        <p><a class="logo" href="/dist/">Optimizely</a></p>
+                        <div id="footer-nav-cont">
+                            <div class="left-nav">
+                                <p>&copy; 2014, Optimizely. All Rights Reserved</p>
+                                <ul id="legalese" class="clearfix">
+                                    <li class="terms"><a href="/dist/terms/" id="SL-link-terms" class="SL_swap">Terms of Service</a> &nbsp;<span class="separater">|</span></li>
+                                    <li><a href="/dist/privacy/" id="SL-link-privacy" class="SL_swap">Privacy Policy</a> &nbsp;<span class="separater">|</span></li>
+                                    <li class="security"><a href="/dist/security/">Security</a></li>
+                                </ul>
+                                <ul class="social-links">
+                                    <li><a href="http://twitter.com/optimizely" id="SL-link-twitter" class="twitter SL_swap">Twitter</a></li>
+                                    <li><a href="http://www.facebook.com/optimizely" id="SL-link-facebook" class="facebook SL_swap">Facebook</a></li>
+                                    <li><a href="https://plus.google.com/+optimizely/posts" id="SL-link-gplus" class="google-plus SL_swap">Google+</a></li>
+                                </ul>
+                            </div><!--/.left-->
+                            <div class="right-nav">
+                                    <ul id="footer-nav" class="row">
+                                        <li id="footer-nav-features" class="columns three">
+                                            <h4>Product Features &amp; Benefits</h4>
+                                            <ul>
+                                                <li><a href="#">Plans and Pricing</a></li>
+                                                <li><a href="/dist/benefits/">Benefits</a></li>
+                                                <li><a href="/dist/mobile/" class="SL_hide">iOS Beta</a></li>
+                                                <li><a href="/dist/partners/" class="SL_hide">Optimizely for Agencies</a></li>
+                                                <li><a href="http://developers.optimizely.com" class="SL_hide">Optimizely for Developers</a></li>
+                                                <li><a href="/dist/ecommerce/" class="SL_hide">Optimizely for E-commerce</a></li>
+                                                <li><a href="/dist/enterprises/" class="SL_hide">Optimizely for Enterprises</a></li>
+                                                <li><a href="/dist/publishers/" class="SL_hide">Optimizely for Publishers</a></li>
+                                                <li><a href="/dist/small-business/" class="SL_hide">Optimizely for Small Business</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="footer-nav-customers" class="columns two">
+                                            <h4>Customers</h4>
+                                            <ul>
+                                                <li><a href="/dist/customers/">Customer List</a></li>
+                                                <li><a href="/dist/customers/customer-stories/">Customer Stories</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="footer-nav-resources" class="columns three">
+                                            <h4>Resources</h4>
+                                            <ul>
+                                                <li><a href="/dist/ab-testing/">What is A/B Testing?</a></li>
+                                                <li><a href="/dist/split-testing/">What is Split Testing?</a></li>
+                                                <li><a href="/dist/gettingstarted/">Getting Started</a></li>
+                                                <li><a href="/dist/resources/live-demo-webinar/">Live Demo Signup</a></li>
+                                                <li><a href="/dist/partners/">Solutions Partners</a></li>
+                                                <li><a href="/dist/integrations/">Integrations</a></li>
+                                                <li><a href="/dist/gettingstarted/">Getting Started</a></li>
+                                                <li><a href="/dist/faq/">FAQ</a></li>
+                                                <li><a href="http://help.optimizely.com">Knowledge Base</a></li>
+                                                <li><a href="http://developers.optimizely.com">API Documentation</a></li>
+                                                <li><a href="/dist/resources/sample-size-calculator/">Sample Size Calculator</a></li>
+                                                <li><a href="http://blog.optimizely.com">Blog</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="footer-nav-about" class="columns two">
+                                            <h4>About</h4>
+                                            <ul>
+                                                <li><a href="/dist/about/">About</a></li>
+                                                <li><a href="/dist/jobs/">Jobs</a></li>
+                                                <li><a href="/dist/press/">Press</a></li>
+                                                <li><a href="/dist/events/">Events</a></li>
+                                                <li><a href="/dist/contact/">Contact</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="footer-nav-other" class="columns two">
+                                            <h4>Other</h4>
+                                            <ul>
+                                                <li><a href="http://success.optimizely.com">Customer Success</a></li>
+                                                <li><a href="/dist/demo/">Request a Demo</a></li>
+                                                <li><a href="/dist/opt_out/">Opt Out</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul><!--/#footer-nav-->
+                                <div class="row intl-domains">
+                                    <ul id="intl-domains" class="SL_norewrite" translate="no">
+                                        <li class="first"><a href="https://www.optimizely.dk/" title="Danish">Dansk</a></li>
+                                        <li><a href="https://www.optimizely.de/" title="German">Deutsch</a></li>
+                                        <li><a href="https://www.optimizely.com/" title="English">English</a></li>
+                                        <li><a href="https://www.optimizely.es/" title="Spanish">Español</a></li>
+                                        <li><a href="https://www.optimizely.fr/" title="French">Français</a></li>
+                                        <li><a href="https://www.optimizely.it/" title="Italian">Italiano</a></li>
+                                        <li><a href="https://www.optimizely.jp/" title="Japanese">日本語</a></li>
+                                        <li><a href="https://www.optimizely.nl/" title="Dutch">Nederlands</a></li>
+                                        <li><a href="https://www.optimizely.pt/" title="Portuguese">Português</a></li>
+                                        <li class="last"><a href="https://www.optimizely.se/" title="Swedish">Svenska</a></li>
+                                    </ul><!--/#intl-domain-->
+                                </div>
+                            </div><!--/.right-->
+                        </div><!--/#footer-nav-cont-->
+                    </div><!--/.container-->
+                </footer>
+            </div><!--/#inner-wrapper-->
+        </div><!--/#outer-wrapper-->
+        <!-- <div class="optly-hide" data-tooltip="default"></div> --><div id="sign-in-dialog" class="modal-dialog-container optly-hide" data-optly-modal="signin">
+    <div class="dialog narrow">
+        <form action="/account/signin" method="POST" autocomplete="off" novalidate>
+            
+            <div class="modal-header">
+                <p class="normal-header header-h1">Sign in to Optimizely</p>
+                
+            </div><!--/.modal-header-->
+            
+            <div class="modal-body">
+                
+              <label>
+                  <span>Email address</span>
+                  <input type="text" name="email" required />
+              </label>
+              <label>
+                  <span>Password</span>
+                  <input type="password" name="password" data-validation="password" />
+              </label>
+              <div class="terms">
+                  <label class="spaced">
+                      <input type="checkbox" name="persist" checked="checked" />
+                      <p>Keep me signed in</p>
+                  </label>
+              </div>
+              <div class="options">
+                  <p><a class="show-forgot-password">Forgot your password?</a><p>
+                  <p>No account? <a class="show-create-account" data-modal-click="signup">Register here</a></p>
+              </div>
+
+            </div><!--/.modal-body-->
+            <div class="modal-footer">
+                
+                <input type="submit" class="primary-button submit-btn translate" data-modal-btn="signin" value="Sign in &raquo;">
+                
+                
+                <input type="button" data-modal-btn="close" class="secondary-button close-btn translate" value="Cancel">
+                
+            </div><!--/.modal-footer-->
+        </form>
+    </div><!--/.dialog.narrow-->
+</div> <!-- end .modal-dialog-container -->
+<div id="signup-dialog" class="modal-dialog-container optly-hide" data-optly-modal="signup">
+    <div class="dialog narrow">
+        <form action="/account/create" method="POST" autocomplete="off" novalidate>
+            
+            <div class="modal-header">
+                <p class="normal-header header-h1">Create a free account</p>
+                <p>You&#x27;re seconds away from running A/B tests!</p>
+            </div><!--/.modal-header-->
+            
+            <div class="modal-body">
+                
+              <label id="name-label">
+                  <span>Name</span>
+                  <input type="text" name="name" />
+              </label>
+              <label>
+                  <span>Work email address</span>
+                  <input type="text" name="email" />
+              </label>
+              <label>
+                  <span>Password</span>
+                  <h5 class="password-req">Must use at least 8 characters and a mix of upper/lowercase letters, numbers or symbols</h5>
+                  <input type="password" name="password1" class="password1" />
+              </label>
+              <label>
+                  <span>Confirm password</span>
+                  <input type="password" name="password2" />
+              </label>
+              <label id="phone-label">
+                  <span>Phone number</span>
+                  <input type="text" name="phone_number" />
+              </label>
+              <div class="terms">
+                  <input type="checkbox" name="terms-of-service" />
+                  <p>
+                      I agree to the <a href="/dist/terms" target="_blank">Terms of Service</a> and <a href="/dist/privacy" target="_blank">Privacy Policy</a>.
+                  </p>
+              </div>
+              <!-- <input id="hidden" type="hidden" name="hidden" value="" /> -->
+              <div class="options">
+                  <p>Already have an Optimizely account? <a class="show-sign-in" data-modal-click="signin">Sign in here</a></p>
+              </div>
+
+            </div><!--/.modal-body-->
+            <div class="modal-footer">
+                
+                <input type="submit" class="primary-button submit-btn translate" data-modal-btn="signin" value="Create account &raquo;">
+                
+                
+                <input type="button" data-modal-btn="close" class="secondary-button close-btn translate" value="Cancel">
+                
+            </div><!--/.modal-footer-->
+        </form>
+    </div><!--/.dialog.narrow-->
+</div> <!-- end .modal-dialog-container -->
+<div id="create-exp-dialog" class="modal-dialog-container optly-hide" data-optly-modal="create-exp">
+    <div class="dialog narrow">
+        <form action="/account/signin" method="POST" autocomplete="off" id="create-exp-form" novalidate>
+            
+            <div class="modal-header">
+                <p class="normal-header header-h1">Create Experiment</p>
+                <p>Enter a URL below to get started on a new experiment!</p>
+            </div><!--/.modal-header-->
+            
+            <div class="modal-body">
+                
+              <label>
+                  <span>Experiment Name (optional)</span>
+                  <input type="text" name="name" />
+              </label>
+              <label>
+                  <span>Experiment URL</span>
+                  <input type="text" name="url" maxlength="500" required="true" />
+              </label>
+
+            </div><!--/.modal-body-->
+            <div class="modal-footer">
+                
+                <input type="submit" class="primary-button submit-btn translate" data-modal-btn="signin" value="Create Experiment &raquo;">
+                
+                
+                <input type="button" data-modal-btn="close" class="secondary-button close-btn translate" value="Cancel">
+                
+            </div><!--/.modal-footer-->
+        </form>
+    </div><!--/.dialog.narrow-->
+</div> <!-- end .modal-dialog-container -->
+
+        <script>
+          var optly = optly || {};
+          optly.mrkt = optly.mrkt || {};
+          optly.mrkt.assetsDir = '/dist/assets';
+        </script>
+        <script src="/dist/assets/js/bundle.js" defer></script>
+        
+        
+        
+        <script src="/dist/assets/js/pages/sample-size-calculator.js" defer></script>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "grunt-resemble-cli",
+  "description": "The best Grunt plugin ever.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dfox-powell/grunt-resemble-cli",
+  "author": {
+    "name": "dtothefp",
+    "email": "dtothefp@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dfox-powell/grunt-resemble.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dfox-powell/grunt-resemble/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/dfox-powell/grunt-resemble/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt spec:e2e"
+  },
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-jasmine-node": "^0.2.1"
+  },
+  "peerDependencies": {
+    "grunt": "0.4.1"
+  },
+  "keywords": [
+    "gruntplugin",
+    "assets"
+  ],
+  "dependencies": {
+    "resemble-cli": "0.0.14"
+  }
+}
