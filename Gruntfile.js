@@ -58,7 +58,7 @@ module.exports = function(grunt) {
     resemble: {
       compactFormat: {
         options: {
-          screenshotRoot: 'screens',
+          screenshotRoot: 'screenshots/test-1',
           url: 'http://0.0.0.0:8000/dist',
           width: 1000,
           //gm: true
@@ -68,9 +68,9 @@ module.exports = function(grunt) {
       },
       compactFormatGlobbing: {
         options: {
-          screenshotRoot: 'screens',
+          screenshotRoot: 'screenshots/test-2',
           url: 'http://0.0.0.0:8000/dist',
-          width: 1000,
+          width: 700,
           gm: true
         },
         src: ['dist/**/*.html'],
@@ -78,9 +78,9 @@ module.exports = function(grunt) {
       },
       dynamicMapping: {
         options: {
-          screenshotRoot: 'screens',
+          screenshotRoot: 'screenshots/test-3',
           url: 'http://0.0.0.0:8000/dist',
-          width: 1000,
+          width: 500,
           gm: true
         },
         files: [
