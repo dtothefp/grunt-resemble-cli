@@ -103,15 +103,15 @@ Type: `boolean`
 Default value: `false`
 *Note: If flagged as true ImageMagick or GraphicsMagick must be globally installed on the user's machine via HomeBrew or some other medium*
 
-A flag specifying if you would like to compare screenshots with (GraphicsMagick)[http://aheckmann.github.io/gm/]. Resemble CLI was created in a way that the user does not have to globally install external dependencies such as PhantomJS, CasperJS, ImageMagick, and GraphicsMagick.  Therefore, default behavior is to compare images using (ResembleJS)[http://huddle.github.io/Resemble.js/].  Comparing without GM is a much slower process as Phantom has to fire up a webpage to compare images within using Resemble.  
+A flag specifying if you would like to compare screenshots with [GraphicsMagick](http://aheckmann.github.io/gm/). Resemble CLI was created in a way that the user does not have to globally install external dependencies such as PhantomJS, CasperJS, ImageMagick, and GraphicsMagick.  Therefore, default behavior is to compare images using [ResembleJS](http://huddle.github.io/Resemble.js/).  Comparing without GM is a much slower process as Phantom has to fire up a webpage to compare images within using Resemble.  
 
 #### debug
 Type: `boolean`
 Default value: `false`
 
-This flag was developed primarily for the (Resemble CLI)[ https://www.npmjs.org/package/resemble-cli] and it has not been tested in the grunt plugin.  It essentially will run the Phantom child process in debug mode.
+This flag was developed primarily for the [Resemble CLI](https://www.npmjs.org/package/resemble-cli) and it has not been tested in the grunt plugin.  It essentially will run the Phantom child process in debug mode.
 
-If you would like to debug the grunt task I suggest using (build-debug)[https://www.npmjs.org/package/build-debug]
+If you would like to debug the grunt task I suggest using [build-debug](https://www.npmjs.org/package/build-debug)
 
 ```js
 grunt.initConfig({
