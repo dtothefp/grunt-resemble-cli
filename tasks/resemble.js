@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       debug: false
     });
 
-    var args = [ path.join(process.cwd(), 'node_modules', 'resemble-cli', 'bin', 'run-resemble.js') ];
+    var args = [ path.join(__dirname, '..', 'node_modules', 'resemble-cli', 'bin', 'run-resemble.js') ];
 
     options.pages = [];
     options.screensDir = this.data.dest ? this.data.dest : this.data.files[0].dest;

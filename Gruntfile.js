@@ -56,39 +56,36 @@ module.exports = function(grunt) {
     },
 
     resemble: {
-      compactFormat: {
+      options: {
+        screenshotRoot: 'optimizely-screens',
+        url: 'http://0.0.0.0:8000/dist',
+        gm: true
+
+      },
+      desktop: {
         options: {
-          screenshotRoot: 'screenshots/test-1',
-          url: 'http://0.0.0.0:8000/dist',
-          width: 700,
-          gm: true
+          width: 1100,
         },
         src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
-        dest: 'compact-format',
+        dest: 'desktop',
       },
-      compactFormatGlobbing: {
+      tablet: {
         options: {
-          screenshotRoot: 'screenshots/test-2',
-          url: 'http://0.0.0.0:8000/dist',
-          width: 900,
-          gm: true
+          width: 800,
         },
         src: ['dist/**/*.html'],
-        dest: 'compact-format-glob',
+        dest: 'tablet',
       },
-      dynamicMapping: {
+      mobile: {
         options: {
-          screenshotRoot: 'screenshots/test-3',
-          url: 'http://0.0.0.0:8000/dist',
-          width: 900,
-          gm: true
+          width: 450,
         },
         files: [
          { 
            cwd: 'dist/',
            expand: true,     
            src: ['**/*.html'],
-           dest: 'dynamic-mapping'
+           dest: 'mobile'
          },
         ]
       }
