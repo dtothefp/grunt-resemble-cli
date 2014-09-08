@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         options: {
           port: 8000,
           base: '.',
-          keepalive: true
+          //keepalive: true
         }
       }
     },
@@ -60,8 +60,8 @@ module.exports = function(grunt) {
         options: {
           screenshotRoot: 'screenshots/test-1',
           url: 'http://0.0.0.0:8000/dist',
-          width: 1000,
-          //gm: true
+          width: 700,
+          gm: true
         },
         src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
         dest: 'compact-format',
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
         options: {
           screenshotRoot: 'screenshots/test-2',
           url: 'http://0.0.0.0:8000/dist',
-          width: 700,
+          width: 900,
           gm: true
         },
         src: ['dist/**/*.html'],
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
         options: {
           screenshotRoot: 'screenshots/test-3',
           url: 'http://0.0.0.0:8000/dist',
-          width: 500,
+          width: 900,
           gm: true
         },
         files: [
@@ -111,4 +111,5 @@ module.exports = function(grunt) {
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'jasmine_node']);
 
+  grunt.registerTask('screens', ['connect', 'resemble']);
 };

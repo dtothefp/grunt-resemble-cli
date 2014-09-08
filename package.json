@@ -1,7 +1,7 @@
 {
   "name": "grunt-resemble-cli",
   "description": "The best Grunt plugin ever.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/dfox-powell/grunt-resemble-cli",
   "author": {
     "name": "dtothefp",
@@ -27,14 +27,11 @@
     "test": "grunt spec:e2e"
   },
   "devDependencies": {
-    "grunt": "0.4.1",
+    "grunt": "^0.4.1",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-connect": "^0.8.0",
     "grunt-contrib-jshint": "^0.9.2",
     "grunt-jasmine-node": "^0.2.1"
-  },
-  "peerDependencies": {
-    "grunt": "0.4.1"
   },
   "keywords": [
     "gruntplugin",
