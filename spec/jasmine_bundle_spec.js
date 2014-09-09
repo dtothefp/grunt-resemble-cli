@@ -10,11 +10,11 @@ var path = require('path');
 var spawn = require('child_process').spawn;
 var runGruntTask = require('./taskRunner');
 
-afterEach(function() {
-  if(fs.existsSync( path.join(__dirname, 'optimizely-screens') )) {
-    clear( path.join(__dirname, 'optimizely-screens') );
-  }
-});
+// afterEach(function() {
+//   if(fs.existsSync( path.join(__dirname, 'optimizely-screens') )) {
+//     clear( path.join(__dirname, 'optimizely-screens') );
+//   }
+// });
 
 jasmine.getEnv().defaultTimeoutInterval = 20000;
 
@@ -30,8 +30,13 @@ describe('it runs the JASMINE BUNDLE resemble function', function() {
             gm: false,
             width: 1100,
           },
-          src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
-          dest: 'test',
+          src: [
+            'dist/about', 
+            'dist/contact', 
+            'dist/customers/**/*.html',
+            'dist/resources/**/*.html'  
+          ],
+          dest: 'bundle-test',
         }
       }
     };
@@ -40,15 +45,12 @@ describe('it runs the JASMINE BUNDLE resemble function', function() {
   describe('it creates 5 files, one for root url, and 4 from config src', function() {
 
     Given(function(done) {
-      var cp = runGruntTask('resemble', this.config);
+      runGruntTask('resemble', this.config, done);
 
-      cp.on("exit", function(code) {
-        done();
-      });
     });
 
     When(function() {
-      this.files = fs.readdirSync( path.join(__dirname, 'optimizely-screens', 'test') );
+      this.files = fs.readdirSync( path.join(__dirname, 'optimizely-screens', 'bundle-test') );
     });
 
     Then(function() {

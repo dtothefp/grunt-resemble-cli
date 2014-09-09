@@ -7,15 +7,15 @@ var clear = grunt.file['delete'];
 var expand = grunt.file.expand;
 var fs = require('fs');
 var path = require('path');
-var AsyncSpec = require("node-jasmine-async");
+var AsyncSpec = require('node-jasmine-async');
 var spawn = require('child_process').spawn;
 var runGruntTask = require('./taskRunner');
 
-afterEach(function() {
-  if(fs.existsSync( path.join(__dirname, 'optimizely-screens') )) {
-    clear( path.join(__dirname, 'optimizely-screens') );
-  }
-});
+/*afterEach(function() {*/
+  //if(fs.existsSync( path.join(__dirname, 'optimizely-screens') )) {
+    //clear( path.join(__dirname, 'optimizely-screens') );
+  //}
+/*});*/
 
 jasmine.getEnv().defaultTimeoutInterval = 20000;
 
@@ -35,22 +35,25 @@ describe('it runs the JASMINE NODE resemble function', function() {
               gm: false,
               width: 1100,
             },
-            src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
-            dest: 'test',
+            src: [
+              'dist/about', 
+              'dist/contact', 
+              'dist/customers/**/*.html',
+              'dist/resources/**/*.html'  
+            ],
+            dest: 'jasmine-node-test',
           }
         }
       };
 
-      cp = runGruntTask('resemble', config);
+      runGruntTask('resemble', config, done);
 
-      cp.on("exit", function(code) {
-        done();
-      });
+      
 
     });
 
     async.it('reads the created files', function(done){
-      fs.readdir( path.join(__dirname, 'optimizely-screens', 'test'), function(err, files) {
+      fs.readdir( path.join(__dirname, 'optimizely-screens', 'jasmine-node-test'), function(err, files) {
         if(!err) {
           diffFiles = files;
         } else {

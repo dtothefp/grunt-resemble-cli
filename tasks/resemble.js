@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         options.pages.push(file); 
       });
     }
-    debugger;
+
     options.pages = options.pages.join(',');
 
     for (var prop in options) {

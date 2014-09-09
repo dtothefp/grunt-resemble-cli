@@ -1,7 +1,7 @@
 {
   "name": "grunt-resemble-cli",
   "description": "The best Grunt plugin ever.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/dtothefp/grunt-resemble-cli",
   "author": {
     "name": "dtothefp",

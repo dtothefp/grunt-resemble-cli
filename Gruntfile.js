@@ -15,8 +15,8 @@ grunt.initConfig({
   jshint: {
     all: [
       'Gruntfile.js',
-      'tasks/*.js',
-      'test/*.js'
+      'tasks/**/*.js',
+      'spec/**/*.js'
     ],
     options: {
       jshintrc: '.jshintrc'
@@ -49,7 +49,7 @@ grunt.initConfig({
     server: {
       options: {
         port: 8000,
-        base: '.',
+        base: '.'
         //keepalive: true
       }
     }
@@ -66,7 +66,12 @@ grunt.initConfig({
       options: {
         width: 1100,
       },
-      src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
+      src: [
+        'dist/about', 
+        'dist/contact', 
+        'dist/customers/**/*.html',
+        'dist/resources/**/*.html'  
+      ],     
       dest: 'desktop',
     },
     tablet: {
@@ -99,8 +104,7 @@ grunt.initConfig({
     },
     e2e: {
       options: {
-        helpers: ["spec/helpers/**/*.{js,coffee}"],
-        specs: "spec/*_bundle_spec.js"
+        specs: 'spec/*_bundle_spec.js'
       }
     }
   }
@@ -116,12 +120,12 @@ grunt.initConfig({
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-jasmine-bundle');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'jasmine_node']);
+  grunt.registerTask('default', ['jshint', 'connect', 'resemble']);
 
-  // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('jasmine-bundle', ['jshint', 'connect', 'spec']);
+  
+  grunt.registerTask('jasmine-node', ['jshint', 'connect', 'jasmine_node']);
 
-  grunt.registerTask('screens', ['connect', 'resemble']);
+  grunt.registerTask('screens', ['jshint', 'connect', 'resemble']);
+
 };
