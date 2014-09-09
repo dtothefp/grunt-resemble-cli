@@ -1,134 +1,66 @@
-var grunt  = require("grunt");
-var spawn  = require("child_process").spawn;
-var read   = grunt.file.read;
-var write  = grunt.file.write;
-var mkdir  = grunt.file.mkdir;
-var clear  = grunt.file.delete;
+var grunt = require('grunt');
+var spawn = require('child_process').spawn;
+var read = grunt.file.read;
+var write = grunt.file.write;
+var mkdir = grunt.file.mkdir;
+var clear = grunt.file['delete'];
 var expand = grunt.file.expand;
-
 var fs = require('fs');
+var path = require('path');
+var spawn = require('child_process').spawn;
 
-function runGruntTask(task, config, done) {
-  spawn("grunt", 
-    [
-      task, 
-      "--config", JSON.stringify(config), 
-      "--tasks", "../tasks", 
-      "--gruntfile", "spec/Gruntfile.js"
-    ], {
-    stdio: 'inherit'
-  }).on("exit", function() {
+function runGruntTask(task, config, done){
+  var cp = spawn(
+        "grunt",
+
+        [ task, 
+          "--config", JSON.stringify(config), 
+          "--tasks", "../tasks", 
+          "--gruntfile", 
+          "spec/Gruntfile.js"
+        ],
+
+        { stdio: 'inherit'}
+      );
+ 
+  cp.on("exit", function() {
     done();
   });
 }
-
-beforeEach(function() {
-  mkdir(this.workspacePath = "spec/tmp");
+  
+afterEach(function(){
+  clear( path.join(__dirname, 'optimizely-screens') );
 });
 
-afterEach(function() {
-  clear("spec/tmp/");
-});
+describe('it runs the JASMINE BUNDLE resemble function', function() {
 
-describe("it should run the dynamic mapping grunt task", function () {
-
-  Given(function(done) {
-    // this.config = {};
-
-    // this.config.compactFormat = {
-    //   injector: {
-    //     compactFormat: {
-    //       src: ['src/bb.js', 'src/bbb.js'],
-    //       dest: 'dest/b.js',
-    //     }
-    //   }
-    // };
-
-    // this.config.filesObjectFormat = {
-    //   injector: {
-    //     filesObjectFormat: {
-    //       files: {
-    //         'dest/a.js': ['src/aa.js', 'src/aaa.js'],
-    //         'dest/a1.js': ['src/aa1.js', 'src/aaa1.js'],
-    //       }
-    //     }
-    //   }
-    // };
-
-    // this.config.filesArrayFormat = {
-    //   filesArrayFormat: {
-    //     files: [
-    //       {src: ['src/aa.js', 'src/aaa.js'], dest: 'dest/a.js'},
-    //       {src: ['src/aa1.js', 'src/aaa1.js'], dest: 'dest/a1.js'},
-    //     ]
-    //   }
-    // };
-
-    // this.config.compactFormatGlobbing = {
-    //   injector: {
-    //     compactFormatGlobbing: {
-    //       src: ['files/**/*.js'],
-    //       dest: 'dest/b.js',
-    //     }
-    //   }
-    // };
-
-    // this.config.filesObjectFormatGlobbing = {
-    //   injector: {
-    //     filesObjectFormatGlobbing: {
-    //       files: {
-    //         'dest/a.js': ['files/**/*.js', 'files/**/*.html'],
-    //         'dest/a1.js': ['src/aa1.js', 'src/aaa1.js'],
-    //       }
-    //     }
-    //   }
-    // };
-
-    // this.config.filesArrayFormatGlobbing = {
-    //   injector: {
-    //     filesArrayFormatGlobbing: {
-    //       files: [
-    //         {src: ['files/**/*.js', 'files/**/*.html'], dest: 'dest/a.js'},
-    //         {src: ['src/aa1.js', 'src/aaa1.js'], dest: 'dest/a1.js'},
-    //       ]
-    //     }
-    //   }
-    // };
-
-    this.dynamicMapping = {
-      injector: {
-        dynamicMapping: {
-          options: {
-            stripPath: ''
-          },
-          files: [
-            {
-              expand: true, 
-              cwd: 'files/',    
-              src: ['**/*.js', '**/*.html'], // Actual pattern(s) to match.
-              dest: 'tmp/',   // Destination path prefix.
+    describe('it creates 5 files, one for root url, and 4 from config src', function() {
+      
+      Given(function(done) {
+        this.config = {
+          resemble: {
+            sut: {
+              options: {
+                screenshotRoot: 'optimizely-screens',
+                url: 'http://0.0.0.0:8000/dist',
+                gm: true,
+                width: 1100,
+              },
+              src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
+              dest: 'desktop',
             }
-          ]
-        }
-      }
-    };
+          }
+        };
+        
+        runGruntTask('resemble', this.config, done);
+      });
+      When(function() {
+        this.files = fs.readdirSync( path.join(__dirname, 'optimizely-screens', 'desktop') );
+      });
+      Then(function() {
+        expect(this.files.length).toBe(5);
+      });
+        
+  });
 
-    runGruntTask('injector', this.dynamicMapping, done);
-
-  }); //end Given
-
-  describe('doing something', function() {
-    When(function() {
-      this.dirs = fs.readdirSync(process.cwd() + '/spec/tmp/files/js');
-    });
-    
-    Then(function() {
-      expect(this.dirs.length).toBe(2);
-    });
-  })
-
-
-
-});  
-
-//runGruntTask('injector', this.config.dynamicMapping, done);
+});

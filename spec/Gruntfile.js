@@ -1,7 +1,4 @@
-module.exports = function (grunt) { 
+module.exports = function(grunt) {
+  grunt.initConfig(JSON.parse(grunt.option("config" || {})));
+};
 
-  grunt.initConfig(
-    JSON.parse( grunt.option("config" || {}) )
-  );
-  
-}

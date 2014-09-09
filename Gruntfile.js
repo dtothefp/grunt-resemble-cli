@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         match: '.',
         matchall: false,
         extensions: 'js',
-        specNameMatcher: '_node_spec',
+        specNameMatcher: '*_node_spec',
         jUnit: {
           report: false,
           savePath : './build/reports/jasmine/',
@@ -89,7 +89,20 @@ module.exports = function(grunt) {
          },
         ]
       }
-    }      
+    },      
+
+    spec: {
+      options: {
+        minijasminenode: {
+          showColors: true
+        }
+      },
+      e2e: {
+        options: {
+          specs: 'spec/*_bundle_spec.js'
+        }
+      }
+    }
 
   });
 
@@ -100,13 +113,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jasmine-node');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-jasmine-bundle');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'jasmine_node']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'jasmine_node']);
+  grunt.registerTask('default', ['jshint']);
 
   grunt.registerTask('screens', ['connect', 'resemble']);
 };
