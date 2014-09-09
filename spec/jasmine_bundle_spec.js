@@ -8,59 +8,53 @@ var expand = grunt.file.expand;
 var fs = require('fs');
 var path = require('path');
 var spawn = require('child_process').spawn;
+var runGruntTask = require('./taskRunner');
 
-function runGruntTask(task, config, done){
-  var cp = spawn(
-        "grunt",
-
-        [ task, 
-          "--config", JSON.stringify(config), 
-          "--tasks", "../tasks", 
-          "--gruntfile", 
-          "spec/Gruntfile.js"
-        ],
-
-        { stdio: 'inherit'}
-      );
- 
-  cp.on("exit", function() {
-    done();
-  });
-}
-  
-afterEach(function(){
-  clear( path.join(__dirname, 'optimizely-screens') );
+afterEach(function() {
+  if(fs.existsSync( path.join(__dirname, 'optimizely-screens') )) {
+    clear( path.join(__dirname, 'optimizely-screens') );
+  }
 });
+
+jasmine.getEnv().defaultTimeoutInterval = 20000;
 
 describe('it runs the JASMINE BUNDLE resemble function', function() {
 
-    describe('it creates 5 files, one for root url, and 4 from config src', function() {
-      
-      Given(function(done) {
-        this.config = {
-          resemble: {
-            sut: {
-              options: {
-                screenshotRoot: 'optimizely-screens',
-                url: 'http://0.0.0.0:8000/dist',
-                gm: false,
-                width: 1100,
-              },
-              src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
-              dest: 'desktop',
-            }
-          }
-        };
-        
-        runGruntTask('resemble', this.config, done);
+  Given(function() {
+    this.config = {
+      resemble: {
+        sut: {
+          options: {
+            screenshotRoot: 'optimizely-screens',
+            url: 'http://0.0.0.0:8000/dist',
+            gm: false,
+            width: 1100,
+          },
+          src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
+          dest: 'test',
+        }
+      }
+    };
+  });
+
+  describe('it creates 5 files, one for root url, and 4 from config src', function() {
+
+    Given(function(done) {
+      var cp = runGruntTask('resemble', this.config);
+
+      cp.on("exit", function(code) {
+        done();
       });
-      When(function() {
-        this.files = fs.readdirSync( path.join(__dirname, 'optimizely-screens', 'desktop') );
-      });
-      Then(function() {
-        expect(this.files.length).toBe(5);
-      });
-        
+    });
+
+    When(function() {
+      this.files = fs.readdirSync( path.join(__dirname, 'optimizely-screens', 'test') );
+    });
+
+    Then(function() {
+      expect(this.files.length).toBe(5);
+    });
+
   });
 
 });

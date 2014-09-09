@@ -11,100 +11,101 @@
 module.exports = function(grunt) {
 
   // Project configuration.
-  grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        'test/*.js'
-      ],
-      options: {
-        jshintrc: '.jshintrc'
+grunt.initConfig({
+  jshint: {
+    all: [
+      'Gruntfile.js',
+      'tasks/*.js',
+      'test/*.js'
+    ],
+    options: {
+      jshintrc: '.jshintrc'
+    }
+  },
+
+  // Before generating any new files, remove any previously-created files.
+  clean: {
+    tests: ['tmp']
+  },
+
+  jasmine_node: {
+    options: {
+      forceExit: true,
+      match: '.',
+      matchall: false,
+      extensions: 'js',
+      specNameMatcher: '*_node_spec',
+      jUnit: {
+        report: false,
+        savePath : './build/reports/jasmine/',
+        useDotNotation: true,
+        consolidate: true
       }
     },
+    all: ['spec/']
+  },
 
-    // Before generating any new files, remove any previously-created files.
-    clean: {
-      tests: ['tmp']
-    },
-
-    jasmine_node: {
+  connect: {
+    server: {
       options: {
-        forceExit: true,
-        match: '.',
-        matchall: false,
-        extensions: 'js',
-        specNameMatcher: '*_node_spec',
-        jUnit: {
-          report: false,
-          savePath : './build/reports/jasmine/',
-          useDotNotation: true,
-          consolidate: true
-        }
-      },
-      all: ['spec/']
-    },
-
-    connect: {
-      server: {
-        options: {
-          port: 8000,
-          base: '.',
-          //keepalive: true
-        }
-      }
-    },
-
-    resemble: {
-      options: {
-        screenshotRoot: 'optimizely-screens',
-        url: 'http://0.0.0.0:8000/dist',
-        gm: true
-
-      },
-      desktop: {
-        options: {
-          width: 1100,
-        },
-        src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
-        dest: 'desktop',
-      },
-      tablet: {
-        options: {
-          width: 800,
-        },
-        src: ['dist/**/*.html'],
-        dest: 'tablet',
-      },
-      mobile: {
-        options: {
-          width: 450,
-        },
-        files: [
-         { 
-           cwd: 'dist/',
-           expand: true,     
-           src: ['**/*.html'],
-           dest: 'mobile'
-         },
-        ]
-      }
-    },      
-
-    spec: {
-      options: {
-        minijasminenode: {
-          showColors: true
-        }
-      },
-      e2e: {
-        options: {
-          specs: 'spec/*_bundle_spec.js'
-        }
+        port: 8000,
+        base: '.',
+        //keepalive: true
       }
     }
+  },
 
-  });
+  resemble: {
+    options: {
+      screenshotRoot: 'optimizely-screens',
+      url: 'http://0.0.0.0:8000/dist',
+      gm: true
+
+    },
+    desktop: {
+      options: {
+        width: 1100,
+      },
+      src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
+      dest: 'desktop',
+    },
+    tablet: {
+      options: {
+        width: 800,
+      },
+      src: ['dist/**/*.html'],
+      dest: 'tablet',
+    },
+    mobile: {
+      options: {
+        width: 450,
+      },
+      files: [
+       {
+         cwd: 'dist/',
+         expand: true,
+         src: ['**/*.html'],
+         dest: 'mobile'
+       },
+      ]
+    }
+  },
+
+  spec: {
+    options: {
+      minijasminenode: {
+        showColors: true
+      }
+    },
+    e2e: {
+      options: {
+        helpers: ["spec/helpers/**/*.{js,coffee}"],
+        specs: "spec/*_bundle_spec.js"
+      }
+    }
+  }
+
+});
 
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');

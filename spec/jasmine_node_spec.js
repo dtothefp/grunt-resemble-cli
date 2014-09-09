@@ -9,34 +9,24 @@ var fs = require('fs');
 var path = require('path');
 var AsyncSpec = require("node-jasmine-async");
 var spawn = require('child_process').spawn;
+var runGruntTask = require('./taskRunner');
 
-function runGruntTask(task, config, done){
-  var cp = spawn(
-        "grunt",
+afterEach(function() {
+  if(fs.existsSync( path.join(__dirname, 'optimizely-screens') )) {
+    clear( path.join(__dirname, 'optimizely-screens') );
+  }
+});
 
-        [ task, 
-          "--config", JSON.stringify(config), 
-          "--tasks", "../tasks", 
-          "--gruntfile", 
-          "spec/Gruntfile.js"
-        ],
-
-        { stdio: 'inherit'}
-      );
- 
-  cp.on("exit", function() {
-    done();
-  });
-}
-
+jasmine.getEnv().defaultTimeoutInterval = 20000;
 
 describe('it runs the JASMINE NODE resemble function', function() {
 
   describe('it creates 5 files, one for root url, and 4 from config src', function() {
     var async = new AsyncSpec(this);
+    var cp, diffFiles, config;
 
     async.beforeEach(function(done){
-      var config = {
+      config = {
         resemble: {
           sut: {
             options: {
@@ -46,24 +36,31 @@ describe('it runs the JASMINE NODE resemble function', function() {
               width: 1100,
             },
             src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
-            dest: 'desktop',
+            dest: 'test',
           }
         }
       };
-      
-      runGruntTask('resemble', config, done);
+
+      cp = runGruntTask('resemble', config);
+
+      cp.on("exit", function(code) {
+        done();
+      });
 
     });
-    
-    it('creates 5 files', function(){
-      var files = fs.readdirSync( path.join(__dirname, 'optimizely-screens', 'desktop') );
-      expect(files.length).toBe(5);
+
+    async.it('reads the created files', function(done){
+      fs.readdir( path.join(__dirname, 'optimizely-screens', 'test'), function(err, files) {
+        if(!err) {
+          diffFiles = files;
+        } else {
+          console.log(err);
+        }
+        expect(diffFiles.length).toBe(5);
+        done();
+      });
     });
-    
-    async.afterEach(function(){
-      clear( path.join(__dirname, 'optimizely-screens') );
-    });
-        
+
   });
 
 });
