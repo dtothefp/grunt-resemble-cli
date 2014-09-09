@@ -43,7 +43,7 @@ describe('it runs the JASMINE BUNDLE resemble function', function() {
               options: {
                 screenshotRoot: 'optimizely-screens',
                 url: 'http://0.0.0.0:8000/dist',
-                gm: true,
+                gm: false,
                 width: 1100,
               },
               src: ['dist/about', 'dist/contact', 'dist/customers', 'dist/customers/customer-stories'],
