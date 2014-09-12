@@ -49,7 +49,7 @@ grunt.initConfig({
     server: {
       options: {
         port: 8000,
-        base: '.'
+        base: '.',
         //keepalive: true
       }
     }
@@ -59,8 +59,9 @@ grunt.initConfig({
     options: {
       screenshotRoot: 'optimizely-screens',
       url: 'http://0.0.0.0:8000/dist',
-      gm: true
-
+      gm: true,
+      selector: '#outer-wrapper',
+      tolerance: 0
     },
     desktop: {
       options: {

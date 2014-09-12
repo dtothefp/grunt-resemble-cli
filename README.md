@@ -98,6 +98,30 @@ Default value: `1024`
 
 A number specifying the width at which screenshots should be taken.
 
+#### url
+Type: `String`
+Default value: `'http://optimizely.com/'`
+
+A string value specifying the root url where you would like screenshots taken and paths referenced from.
+
+#### width
+Type: `number`
+Default value: `1024`
+
+A number specifying the width at which screenshots should be taken.
+
+#### tolerance
+Type: `Number`
+Default value: `0`
+
+Number for the allowable mismatch tolerance for overwriting.
+
+#### selector
+Type: `string`
+Default value: `body`
+
+Selector for screenshot to be based upon, ex: '#outer-wrapper'
+
 #### gm
 Type: `boolean`
 Default value: `false`
