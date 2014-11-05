@@ -40,6 +40,6 @@
     "assets"
   ],
   "dependencies": {
-    "resemble-cli": ">=0.0.15"
+    "resemble-cli": "git+ssh://git@github.com:dtothefp/grunt-resemble-cli.git"
   }
 }
