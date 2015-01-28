@@ -1,5 +1,5 @@
 # grunt-resemble-cli
-> Grunt wrapper around the resemble-cli image diffing tool
+> Grunt wrapper around the [resemble-cli](https://github.com/dtothefp/resemble-cli) image diffing tool
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
